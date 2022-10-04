@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <div id="ball" style="
+    z-index:5;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background: hsl(240, 67%, 94%)"></div>
+    </body>
+</html>
+
+<script>
+
+var velocityX = 9;
+var velocityY = 29;
+var positionX = 0;
+var positionY = 0;
+var reverse = false;
+var ball = document.getElementById('ball');
+
+//write a function that can change the position of the html element "ball"
+function moveBall() {
+    // two x-axis coordinates
+    var Xmin = 0;
+    var Xmax = 1000;
+  
+    // two y-axis coordinates
+    var Ymin = 0;
+    var Ymax = 400;
+  
+    if (reverse) {
+      positionX = positionX - velocityX;
+      positionY = positionY - velocityY;
+      ball.style.left = positionX + "px";
+      ball.style.top = positionY + "px";
+    } else {
+      positionX = positionX + velocityX;
+      positionY = positionY + velocityY;
+      ball.style.left = positionX + "px";
+      ball.style.top = positionY + "px";
+    }
+  
+    if (
+      positionX > Xmax ||
+      positionX === Xmin ||
+      positionY > Ymax ||
+      positionY === Ymin
+    ) {
+      reverse = !reverse;
+    }
+}
+  setInterval(moveBall, 50);
+
+function colorPop(){
+    ball.style.backgroundColor = "beige";
+    }
+setTimeout(colorPop,5000); 
+
+</script>
